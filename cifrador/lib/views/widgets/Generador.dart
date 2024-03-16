@@ -257,7 +257,7 @@ class _generadorState extends State<generador> {
     int j = 0;
     int k = 0;
 
-    for (var i = 0; i < values["sliderValue"] + 1; i++) {
+    for (var i = 0; i < values["sliderValue"]; i++) {
       j = random.nextInt(4);
 
       if (j == 0 && values["mayusculas"]) {
