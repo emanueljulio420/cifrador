@@ -257,33 +257,41 @@ class _generadorState extends State<generador> {
     int j = 0;
     int k = 0;
 
-    for (var i = 0; i < values["sliderValue"]; i++) {
-      j = random.nextInt(4);
+    if (values["mayusculas"] ||
+        values["minusculas"] ||
+        values["numeros"] ||
+        values["simbolos"] ||
+        values["sliderValue"] != 0) {
+      for (var i = 0; i < values["sliderValue"]; i++) {
+        j = random.nextInt(4);
 
-      if (j == 0 && values["mayusculas"]) {
-        k = random.nextInt(abecedario.length);
-        password = password + "${abecedario[k]}";
-      }
+        if (j == 0 && values["mayusculas"]) {
+          k = random.nextInt(abecedario.length);
+          password = password + "${abecedario[k]}";
+        }
 
-      if (j == 1 && values["minusculas"]) {
-        k = random.nextInt(abecedario.length);
-        password = password + "${abecedario[k].toLowerCase()}";
-      }
+        if (j == 1 && values["minusculas"]) {
+          k = random.nextInt(abecedario.length);
+          password = password + "${abecedario[k].toLowerCase()}";
+        }
 
-      if (j == 2 && values["numeros"]) {
-        k = random.nextInt(numeros.length);
-        password = password + "${numeros[k]}";
-      }
+        if (j == 2 && values["numeros"]) {
+          k = random.nextInt(numeros.length);
+          password = password + "${numeros[k]}";
+        }
 
-      if (j == 3 && values["simbolos"]) {
-        k = random.nextInt(simbolos.length);
-        password = password + "${simbolos[k]}";
-      }
+        if (j == 3 && values["simbolos"]) {
+          k = random.nextInt(simbolos.length);
+          password = password + "${simbolos[k]}";
+        }
 
-      if (password.length < i) {
-        i--;
+        if (password.length <= i) {
+          i--;
+        }
       }
+      _Passwordcontroller.text = password;
+    } else {
+      _Passwordcontroller.text = "Seleccione algun campo";
     }
-    _Passwordcontroller.text = password;
   }
 }

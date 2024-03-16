@@ -13,7 +13,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Generadorcito de contraseñas",
           style: TextStyle(color: Colors.white),
         ),
