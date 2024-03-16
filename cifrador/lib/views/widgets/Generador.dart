@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
 class generador extends StatefulWidget {
@@ -256,7 +257,7 @@ class _generadorState extends State<generador> {
     int j = 0;
     int k = 0;
 
-    for (var i = 0; i < values["sliderValue"]; i++) {
+    for (var i = 0; i < values["sliderValue"] + 1; i++) {
       j = random.nextInt(4);
 
       if (j == 0 && values["mayusculas"]) {
@@ -271,12 +272,16 @@ class _generadorState extends State<generador> {
 
       if (j == 2 && values["numeros"]) {
         k = random.nextInt(numeros.length);
-        password = password + "${numeros[k].toLowerCase()}";
+        password = password + "${numeros[k]}";
       }
 
       if (j == 3 && values["simbolos"]) {
         k = random.nextInt(simbolos.length);
-        password = password + "${simbolos[k].toLowerCase()}";
+        password = password + "${simbolos[k]}";
+      }
+
+      if (password.length < i) {
+        i--;
       }
     }
     _Passwordcontroller.text = password;
